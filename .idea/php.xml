@@ -2,25 +2,25 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/hyper/Exception" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Application" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Database" />
-      <path value="$PROJECT_DIR$/vendor/hyper/ViewEngine" />
       <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Reflection" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Routing" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Models" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Functions" />
       <path value="$PROJECT_DIR$/vendor/funcphp/twig-compress" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Utils" />
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Files" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
-      <path value="$PROJECT_DIR$/vendor/hyper/QueryBuilder" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Http" />
-      <path value="$PROJECT_DIR$/vendor/hyper/Controllers" />
       <path value="$PROJECT_DIR$/vendor/hyper/SQL" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Http" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Twig" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Files" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Utils" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Models" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Routing" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Database" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Exception" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Functions" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Reflection" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Application" />
+      <path value="$PROJECT_DIR$/vendor/hyper/Controllers" />
+      <path value="$PROJECT_DIR$/vendor/hyper/QueryBuilder" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

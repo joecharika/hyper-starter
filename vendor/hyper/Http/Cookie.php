@@ -53,6 +53,7 @@ class Cookie
      */
     function addCookie(string $cookieName, string $cookieValue, $expire = 0, $path = "", $domain = "", $secure = false, $httponly = false)
     {
+        $expire = $expire ?: time() + 60 * 60 * 24 * 1;
         return setcookie($cookieName, $cookieValue, $expire, $path, $domain, $secure, $httponly);
     }
 

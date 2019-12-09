@@ -7,7 +7,10 @@ namespace Hyper\Database;
 use Hyper\Application\Request;
 use Hyper\Exception\HyperError;
 use Hyper\Exception\HyperException;
+use Hyper\Files\ImageHandler;
 use Hyper\Functions\Arr;
+use Hyper\Functions\Debug;
+use Hyper\Functions\Logger;
 use Hyper\Functions\Obj;
 use Hyper\Functions\Str;
 use Hyper\Reflection\Annotation;
@@ -30,18 +33,15 @@ class FileHandler
     {
         $entityArray = $entity;
         foreach ($entityArray as $item => $value) {
-            $isUpload = Annotation::getPropertyAnnotation($this->context->model, $item, 'isFile');
-            if ($isUpload) {
+            if (Annotation::getPropertyAnnotation($this->context->model, $item, 'isFile')) {
                 $file = $this->handleUpload(Obj::property(Request::files(), $item));
-                if (!!isset($file)) {
-                    $fileType = $entityArray[$item]->type;
-                    $uploadType = Annotation::getPropertyAnnotation($this->context->model, $item, "UploadAs");
-                    if ($uploadType === "Base64") {
+
+                if (isset($file)) {
+                    if (Annotation::getPropertyAnnotation($this->context->model, $item, 'UploadAs') === 'Base64') {
                         $var = base64_encode(file_get_contents($file));
-                        $entityArray[$item] = "data:$fileType;base64,$var";
-                    } else {
-                        $entityArray[$item] = "/" . $file;
-                    }
+                        $entityArray[$item] = "data:{$entityArray[$item]->type};base64,$var";
+                    } else
+                        $entityArray[$item] = $file;
                 }
             }
         }
@@ -75,13 +75,27 @@ class FileHandler
 
         $targetDir = "$targetDir/";
         $targetFile = $targetDir . basename($file->name);
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-        #Complete the upload by moving the file into the specific type directory
+        # Complete the upload by moving the file into the specific type directory
         if (move_uploaded_file($file->tmp_name, $targetFile)) {
-            $newFileName = $targetDir . uniqid() . uniqid() . "." . $imageFileType;
+            $newFileName = $targetDir . uniqid() . uniqid() . "." . $fileType;
             rename($targetFile, $newFileName);
-            return $newFileName;
+
+            if ($type === 'images') {
+                try {
+                    $img = ImageHandler::optimise($newFileName);
+                    if ($img !== false) {
+                        \Hyper\Files\FileHandler::delete($newFileName);
+                        return \Hyper\Files\FileHandler::getName($img->org, true);
+                    }
+                } catch (HyperException $e) {
+                    Logger::log("Failed to optimise image [$newFileName], reverting to normal save");
+                }
+            }
+
+            return "/$newFileName";
+
         } else self::error(new HyperException('File upload failed'));
 
         return null;

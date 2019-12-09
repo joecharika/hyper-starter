@@ -1,0 +1,11 @@
+====================[ ERROR @ 09:03:11am ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(260): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(222): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(116): Hyper\Application\HyperApp->run()
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+

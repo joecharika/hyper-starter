@@ -3,11 +3,15 @@
 namespace Hyper\Application;
 
 use Hyper\Database\DatabaseConfig;
-use Hyper\Exception\{HyperError, HyperHttpException};
+use Hyper\Exception\{HyperError, HyperException, HyperHttpException};
 use Hyper\Functions\Logger;
+use Hyper\Functions\Str;
+use Hyper\Http\Cookie;
+use Hyper\Http\StatusCode;
 use Hyper\Models\User;
 use Hyper\Reflection\Annotation;
 use Hyper\Routing\{Route};
+use Hyper\Utils\General;
 use function array_search;
 use function explode;
 use function file_exists;
@@ -24,69 +28,64 @@ class HyperApp
 
     #region Properties
     /**
-     * Name of application
-     * @var string
-     */
-    public static $name = 'HyperApp';
-
-    /**
-     * @var HyperApp
-     */
-    protected static $instance;
-
-    /**
-     * Available routes
-     * @var Route[]
-     */
-    public static $routes;
-
-    /**
      * Signed-in user
      * @var User
      */
     public static $user;
-
     /**
      * Current debug state
      * @var bool
      */
     public static $debug = true;
-
     /**
      * Database configuration object
      * @var DatabaseConfig
      */
     public static $dbConfig;
-
-    /**
-     * Event hooks
-     * @var HyperEventHook|null
-     */
-    public static $eventHook;
-
     /**
      * Temporary static app storage,
      * @var array
      */
     public static $storage = [];
+    /**
+     * @var HyperApp
+     */
+    protected static $instance;
+    /**
+     * Name of application
+     * @var string
+     */
+    public $name = 'HyperApp';
+    /**
+     * Available routes
+     * @var Route[]
+     */
+    public $routes;
+    /**
+     * Event hooks
+     * @var HyperEventHook|null
+     */
+    public $eventHook;
 
     #endregion
 
     #region Init
+
     /**
      * HyperApp constructor.
      * @param string $name The name of your application
-     * @param string $routingMode The method of routing used in your application. Default: auto
      * @param bool $usesAuth
      * @param HyperEventHook|null $eventsHook
      */
-    public function __construct(string $name, string $routingMode = 'auto', $usesAuth = false, HyperEventHook $eventsHook = null)
+    public function __construct(string $name, $usesAuth = false, HyperEventHook $eventsHook = null)
     {
         # Set the application instance for global access
         self::$instance = $this;
 
+        $this->ddos();
+
         # initialize the event hook first
-        self::$eventHook = $eventsHook;
+        $this->eventHook = $eventsHook;
 
         # Emit HyperEventHook::onBoot event => booting starting
         $this->event(
@@ -94,40 +93,57 @@ class HyperApp
             'Application is ready to start'
         );
 
-        #Initialize app data
+        # Initialize app data
         HyperApp::$debug = self::config()->debug;
         HyperApp::$dbConfig = new DatabaseConfig();
-        HyperApp::$name = $name ?? self::$name;
+        $this->name = $name ?? $this->name;
 
         # Clear last request queries
         Logger::log('', '__INIT__', 'LAST_REQUEST_QUERY', 'w');
 
         # Initialize authentication if required
-        HyperApp::$user = $usesAuth ? (new Authorization())->getSession()->user : new User();
+        HyperApp::$user = $usesAuth
+            ? (new Authorization())->getSession()->user
+            : new User;
 
         # Emit HyperEventHook::onBooted event => booting completed
-        $this->event(HyperEventHook::booted, 'Application has been initialised successfully');
+        $this->event(
+            HyperEventHook::booted,
+            'Application has been initialised successfully'
+        );
 
         # Run application
-        $this->run([]);
-
+        $this->run();
     }
 
-    #endregion
-
-    /**
-     * Trigger an event
-     * @param string $event Name od the event
-     * @param mixed|null $data Data to pass to the event
-     * @return void
-     */
-    public static function event(string $event, $data = null): void
+    protected function ddos()
     {
-        if (!isset(self::$eventHook))
-            self::$eventHook = new HyperEventHook([]);
+        $config = self::config();
+        $ipAddress = General::ipAddress();
 
-        self::$eventHook->emit($event, $data);
+        if ($config->limitRequests && $ipAddress) {
+            $cookie = new Cookie;
+            $ddosKey = '__hyper-piXhjs984Mhfo::f8Hdksm';
+            $ddosKeyPair = $cookie->getCookie($ddosKey);
+
+            if (Str::endsWith($ddosKeyPair, '.010')) {
+                $cookie->removeCookie($ddosKey);
+                header('refresh:7;url=' . Request::url(), false, StatusCode::TOO_MANY_REQUESTS);
+                self::error(new HyperException(
+                    'Your consistence is amazing, but lets take a break...',
+                    StatusCode::TOO_MANY_REQUESTS
+                ));
+            } else {
+                $cookie->addCookie(
+                    $ddosKey,
+                    hash('gost-crypto', $ipAddress) . '.0' . ((int)substr($ddosKeyPair, -2) + 1),
+                    time() + 10,
+                    '/'
+                );
+            }
+        }
     }
+    #endregion
 
     /**
      * Get configuration object from specified file
@@ -137,44 +153,57 @@ class HyperApp
     public static function config($file = 'hyper.config.json')
     {
         #If config file was not found return default config
-        if (!file_exists($file) || !isset($file)) {
+        if (!file_exists($file) || !isset($file))
             return (object)[
                 'debug' => true,
+                'limitRequests' => true,
                 'errors' => (object)[
                     'defaultPath' => 'shared/error.html.twig',
                     'custom' => (object)[]
                 ],
                 'reportLink' => null
             ];
-        }
 
         #Else return the config from config file
         return (object)json_decode(file_get_contents($file));
     }
 
     /**
-     * @param array $routes
+     * Trigger an event
+     * @param string $event Name od the event
+     * @param mixed|null $data Data to pass to the event
+     * @return void
      */
-    protected function run(array $routes)
+    public static function event(string $event, $data = null): void
+    {
+        $instance = HyperApp::instance();
+        if (!isset($instance->eventHook))
+            $instance->eventHook = new HyperEventHook([]);
+
+        $instance->eventHook->emit($event, $data);
+    }
+
+    /**
+     * Get application instance
+     * @return HyperApp
+     */
+    public static function instance(): HyperApp
+    {
+        return self::$instance;
+    }
+
+    #region Application Types
+
+    protected function run()
     {
         /** @var Route $route */
-        $route = null;
-
-        foreach ($routes as $tempRoute) {
-            if (Route::match($tempRoute)) {
-                $route = Request::$route = $tempRoute;
-                break;
-            }
-        }
-
-        if (!isset($route))
-            $route = Request::$route =
-                new Route(
-                    Request::route()->action,
-                    Request::route()->controller,
-                    Request::path(),
-                    uniqid()
-                );
+        $route = Request::$route =
+            new Route(
+                Request::route()->action,
+                Request::route()->controller,
+                Request::path(),
+                uniqid()
+            );
 
         switch ($route->realController) {
             case 'api':
@@ -193,8 +222,6 @@ class HyperApp
                 $this->web($route);
         }
     }
-
-    #region Application Types
 
     protected function api(Route $route)
     {
@@ -232,7 +259,7 @@ class HyperApp
                     $action = $route->action;
                     echo (new $route->controller())->$action();
                 } else
-                    Request::redirectTo('login', 'auth');
+                    Request::redirectTo('login', 'auth', null, null, ['return' => Request::path()]);
 
             } else
                 self::error(
@@ -273,15 +300,6 @@ class HyperApp
                 return true;
         }
         return false;
-    }
-
-    /**
-     * Get application instance
-     * @return HyperApp
-     */
-    public static function instance(): HyperApp
-    {
-        return self::$instance;
     }
 
     #endregion

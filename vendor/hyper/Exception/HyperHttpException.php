@@ -13,16 +13,6 @@ class HyperHttpException extends HyperException
         return self::get($message, "404");
     }
 
-    public static function badRequest(): Exception
-    {
-        return self::get("Bad request", "400.5");
-    }
-
-    public static function notAuthorised(): Exception
-    {
-        return self::get("Not authorised", "403");
-    }
-
     private static function get($message, $code)
     {
         $exc = new HyperHttpException($message, $code);
@@ -32,6 +22,16 @@ class HyperHttpException extends HyperException
         $exc->file = @$var['file'];
 
         return $exc;
+    }
+
+    public static function badRequest(): Exception
+    {
+        return self::get("Bad request", "400.5");
+    }
+
+    public static function notAuthorised(): Exception
+    {
+        return self::get("Not authorised", "403");
     }
 }
 

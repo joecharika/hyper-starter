@@ -54,7 +54,7 @@ class HyperEventHook
                 } else {
                     if ($exc instanceof Exception || $exc instanceof RuntimeException || $exc instanceof Error)
                         $exc = $exc->getMessage();
-                    self::error(new HyperException('A hyper unrelated error occurred, and all we know is this: <br> ' . $exc));
+                    self::error(new HyperException('<small><i>A hyper unrelated error occurred, and all we know is this:</i></small> <br> ' . $exc));
                 }
             };
         $handler = function ($exc = null) {

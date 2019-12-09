@@ -4,6 +4,8 @@
 namespace Hyper\Files;
 
 
+use function file_exists;
+
 abstract class Folder
 {
     public static function controllers(): string
@@ -13,7 +15,7 @@ abstract class Folder
 
     public static function root(): string
     {
-        return $_SERVER['DOCUMENT_ROOT']  . '/';
+        return $_SERVER['DOCUMENT_ROOT'] . '/';
     }
 
     public static function views(): string
@@ -39,5 +41,10 @@ abstract class Folder
     public static function log(): string
     {
         return self::root() . 'log/';
+    }
+
+    public static function create(string $path)
+    {
+        return file_exists($path) ?: mkdir($path, 0777, true);
     }
 }

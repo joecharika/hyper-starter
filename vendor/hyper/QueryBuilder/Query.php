@@ -161,8 +161,26 @@ class Query
      */
     public function where($column = '', $value = '1', $operator = '='): Query
     {
+        if (Str::contains($this->query, 'where'))
+            return $this->subWhere($column, $value, $operator);
+
         $this->sanitize($column, $operator, $value);
         return $this->setQuery("where $column$operator$value");
+    }
+
+    /**
+     * Filters a result set to include only records that fulfill a specified condition
+     * @param string $column
+     * @param string $operator
+     * @param string $value
+     * @param string $punctuation
+     * @return Query|QueryManipulator
+     */
+    public function subWhere($column = '', $value = '1', $operator = '', $punctuation = 'and'): Query
+    {
+        $this->sanitize($column, $operator, $value);
+        return $this
+            ->setQuery("$punctuation $column$operator$value");
     }
 
     /**
@@ -200,8 +218,12 @@ class Query
 
     public function whereNotDeleted()
     {
-        return $this->where('deletedAt', 'null', SqlOperator::isNot);
+        return $this->where('deletedAt', 'NULL', SqlOperator::is);
+    }
 
+    public function whereDeleted()
+    {
+        return $this->where('deletedAt', 'NULL', SqlOperator::isNot);
     }
 
     /**
@@ -466,7 +488,7 @@ class Query
     public function select($columns = '*'): Query
     {
         $columns = $columns ?? '*';
-        $c = is_string($columns) ? $columns : Arr::spread($columns, false, ',');
+        $c = is_string($columns) ? $columns : '`' . Arr::spread($columns, false, '`,`') . '`';
         return $this->setQuery("select $c");
     }
 
@@ -615,21 +637,6 @@ class Query
      */
     public function view()
     {
-    }
-
-    /**
-     * Filters a result set to include only records that fulfill a specified condition
-     * @param string $column
-     * @param string $operator
-     * @param string $value
-     * @param string $punctuation
-     * @return Query|QueryManipulator
-     */
-    public function subWhere($column = '', $value = '1', $operator = '', $punctuation = 'and'): Query
-    {
-        $this->sanitize($column, $operator, $value);
-        return $this
-            ->setQuery("$punctuation $column$operator$value");
     }
 
     /**

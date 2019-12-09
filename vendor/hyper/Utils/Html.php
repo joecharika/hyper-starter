@@ -1,16 +1,15 @@
 <?php
 
 
-namespace Hyper\ViewEngine;
+namespace Hyper\Utils;
 
 
-use Hyper\Exception\NullValueException;
 use InvalidArgumentException;
 use Traversable;
 
 /**
  * Class Html
- * @package hyper\ViewEngine
+ * @package hyper\Utils
  */
 class Html
 {
@@ -47,15 +46,18 @@ class Html
             'html4-frame' => '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',
         );
 
-        return self::output(array_key_exists(strtolower($type),
-            $docTypes) ? $docTypes[$type] . "\n" : self::UNKNOWN_TAG);
+        return self::output(
+            array_key_exists(strtolower($type), $docTypes)
+                ? "{$docTypes[$type]}\n"
+                : self::UNKNOWN_TAG
+        );
     }
 
     private static function output($output)
     {
         if (self::$print) {
             print $output;
-            return null;
+            return '';
         } else return $output;
     }
 
@@ -196,6 +198,10 @@ class Html
         return Html::create("head", $attributes, "$innerHtml");
     }
 
+    #endregion
+
+    #region 2. Formatting
+
     /**
      * <title> Defines a title for the document
      *
@@ -209,10 +215,6 @@ class Html
     {
         return Html::create("title", $attributes, "$title");
     }
-
-    #endregion
-
-    #region 2. Formatting
 
     /**
      * <body> Defines the document's body
@@ -289,19 +291,6 @@ class Html
         return "<$tagName $attributesString />" . PHP_EOL;
     }
 
-    /**
-     * <hr> Defines a thematic change in the content
-     *
-     * @static
-     * @access public
-     * @param array $attributes
-     * @return string
-     */
-    public static function rule($attributes = array())
-    {
-        return Html::short('hr', $attributes);
-    }
-
     /*
      * <bdi> Isolates a part of text that might be formatted in a different direction from other text outside it
     <bdo> Overrides the current text direction
@@ -345,6 +334,19 @@ class Html
     #region 3. Forms and Input
 
     /**
+     * <hr> Defines a thematic change in the content
+     *
+     * @static
+     * @access public
+     * @param array $attributes
+     * @return string
+     */
+    public static function rule($attributes = array())
+    {
+        return Html::short('hr', $attributes);
+    }
+
+    /**
      * Returns non-breaking space entities
      *
      * @static
@@ -356,6 +358,8 @@ class Html
     {
         return str_repeat('&nbsp;', $count);
     }
+
+    #region Input Variations
 
     /**
      * <!--...--> Defines a comment
@@ -369,8 +373,6 @@ class Html
     {
         return "<!--$comment-->" . PHP_EOL;
     }
-
-    #region Input Variations
 
     /**
      * <acronym> Not supported in HTML5. Use <abbr> instead. Defines an acronym
@@ -618,6 +620,35 @@ class Html
         }
         return $returnAsArray ? $checkBoxes : implode('', $checkBoxes);
     }
+    #endregion
+
+    /*
+    <input> Defines an input control
+    <textarea> Defines a multiline input control (text area)
+    <button> Defines a clickable button
+    <select> Defines a drop-down list
+    <optgroup> Defines a group of related options in a drop-down list
+    <option> Defines an option in a drop-down list
+
+    <fieldset> Groups related elements in a form
+    <legend> Defines a caption for a
+    <fieldset> element
+    <datalist> Specifies a list of pre-defined options for input controls
+    <output> Defines the result of a calculation
+    */
+
+    #endregion
+
+    #region 4. Frames
+
+    /*<frame> Not supported in HTML5. Defines a window (a frame) in a frameset
+    <frameset> Not supported in HTML5. Defines a set of frames
+    <noframes> Not supported in HTML5. Defines an alternate content for users that do not support frames
+    <iframe> Defines an inline frame */
+
+    #endregion
+
+    #region 5. Images
 
     /**
      * @param $name
@@ -654,56 +685,6 @@ class Html
             ? array($hidden, $checkbox)
             : $hidden . $checkbox;
     }
-    #endregion
-
-    /*
-    <input> Defines an input control
-    <textarea> Defines a multiline input control (text area)
-    <button> Defines a clickable button
-    <select> Defines a drop-down list
-    <optgroup> Defines a group of related options in a drop-down list
-    <option> Defines an option in a drop-down list
-
-    <fieldset> Groups related elements in a form
-    <legend> Defines a caption for a
-    <fieldset> element
-    <datalist> Specifies a list of pre-defined options for input controls
-    <output> Defines the result of a calculation
-    */
-
-    #endregion
-
-    #region 4. Frames
-
-    /*<frame> Not supported in HTML5. Defines a window (a frame) in a frameset
-    <frameset> Not supported in HTML5. Defines a set of frames
-    <noframes> Not supported in HTML5. Defines an alternate content for users that do not support frames
-    <iframe> Defines an inline frame */
-
-    #endregion
-
-    #region 5. Images
-
-    /**
-     * @param $name
-     * @param array $collection
-     * @param $checked
-     * @param array $labelAttributes
-     * @param bool $returnAsArray
-     * @return array|string
-     */
-    public static function collectionRadios($name, array $collection, $checked, array $labelAttributes = array(), $returnAsArray = false)
-    {
-        $radioButtons = array();
-        foreach ($collection as $value => $label) {
-            $radioButtons[] = Html::create(
-                'label',
-                $labelAttributes,
-                Html::radio($name, $value, $value === $checked) . Html::escape($label),
-                );
-        }
-        return $returnAsArray ? $radioButtons : implode('', $radioButtons);
-    }
 
     /*<img> Defines an image
     <map> Defines a client-side image-map
@@ -729,6 +710,33 @@ class Html
 
     /**
      * @param $name
+     * @param array $collection
+     * @param $checked
+     * @param array $labelAttributes
+     * @param bool $returnAsArray
+     * @return array|string
+     */
+    public static function collectionRadios($name, array $collection, $checked, array $labelAttributes = array(), $returnAsArray = false)
+    {
+        $radioButtons = array();
+        foreach ($collection as $value => $label) {
+            $radioButtons[] = Html::create(
+                'label',
+                $labelAttributes,
+                Html::radio($name, $value, $value === $checked) . Html::escape($label),
+                );
+        }
+        return $returnAsArray ? $radioButtons : implode('', $radioButtons);
+    }
+    /*
+    <link> Defines the relationship between a document and an external resource (most used to link to style sheets)
+    <nav> Defines navigation links*/
+    #endregion
+
+    #region 8. Lists
+
+    /**
+     * @param $name
      * @param $value
      * @param bool $checked
      * @param array $attributes
@@ -744,12 +752,17 @@ class Html
         ), $attributes);
         return Html::create('input', $attributes);
     }
-    /*
-    <link> Defines the relationship between a document and an external resource (most used to link to style sheets)
-    <nav> Defines navigation links*/
+
+    /*<ul> Defines an unordered list
+    <ol> Defines an ordered list
+    <li> Defines a list item
+    <dir> Not supported in HTML5. Use <ul> instead. Defines a directory list
+    <dl> Defines a description list
+    <dt> Defines a term/name in a description list
+    <dd> Defines a description of a term/name in a description list*/
     #endregion
 
-    #region 8. Lists
+    #region 9. Tables
 
     /**
      * @param $name
@@ -787,17 +800,6 @@ class Html
         }
         return self::output(Html::create('select', $attributes, $content));
     }
-
-    /*<ul> Defines an unordered list
-    <ol> Defines an ordered list
-    <li> Defines a list item
-    <dir> Not supported in HTML5. Use <ul> instead. Defines a directory list
-    <dl> Defines a description list
-    <dt> Defines a term/name in a description list
-    <dd> Defines a description of a term/name in a description list*/
-    #endregion
-
-    #region 9. Tables
 
     /**
      * @param $value
@@ -907,29 +909,12 @@ class Html
 
     public static function img($src, $alt = null, $attributes = array())
     {
-        if (is_null($src)) (new NullValueException())->throw("Image source cannot be null.");
-
         return Html::short("img", array_merge(
             [
                 "src" => $src,
                 "alt" => is_null($alt) ? implode("_", explode("/", $src)) : $alt
             ], $attributes));
     }
-
-
-    /* <table> Defines a table
-     <caption> Defines a table caption
-     <th> Defines a header cell in a table
-     <tr> Defines a row in a table
-     <td> Defines a cell in a table
-     <thead> Groups the header content in a table
-     <tbody> Groups the body content in a table
-     <tfoot> Groups the footer content in a table
-     <col> Specifies column properties for each column within a <colgroup> element
-     <colgroup> Specifies a group of one or more columns in a table for formatting*/
-    #endregion
-
-    #region 9. Styles and Semantics
 
     /**
      * <a> Defines a hyperlink
@@ -999,6 +984,71 @@ class Html
         );
     }
 
+
+    /* <table> Defines a table
+     <caption> Defines a table caption
+     <th> Defines a header cell in a table
+     <tr> Defines a row in a table
+     <td> Defines a cell in a table
+     <thead> Groups the header content in a table
+     <tbody> Groups the body content in a table
+     <tfoot> Groups the footer content in a table
+     <col> Specifies column properties for each column within a <colgroup> element
+     <colgroup> Specifies a group of one or more columns in a table for formatting*/
+    #endregion
+
+    #region 9. Styles and Semantics
+
+    public static function tHeaderRow($columns, $attributes = array(), $columnAttributes = array(), $delimiter = "|")
+    {
+        if (is_null($columns)) return "";
+
+        $columns = is_array($columns)
+            ? $columns
+            : (strpos($columns, $delimiter) > 0
+                ? explode($delimiter, $columns)
+                : $columns
+            );
+
+        if (is_array($columns)) {
+            $_heading = $columns;
+            $columns = Html::open("tr", $attributes);
+            foreach ($_heading as $item)
+                $columns .= Html::th("$item", $columnAttributes);
+            $columns .= Html::close("tr");
+        }
+
+        return Html::create("thead", [], $columns);
+    }
+
+    public static function th($innerHtml, $attributes = array())
+    {
+        return Html::create("th", $attributes, $innerHtml);
+    }
+
+    public static function tBody($rows, $attributes = array(), $rowAttributes = array(), $columnAttributes = array(), $delimiter = "|")
+    {
+        $rows = is_null($rows)
+            ? ""
+            : (is_array($rows)
+                ? $rows :
+                (strpos($rows, $delimiter) > 0
+                    ? explode($delimiter, $rows)
+                    : $rows)
+            );
+
+        if (is_array($rows)) {
+            $_heading = $rows;
+            $rows = Html::open("tbody", $attributes);
+            foreach ($_heading as $item)
+                $rows .= Html::tRow($item, $rowAttributes, $columnAttributes);
+
+            $rows .= Html::close("tbody");
+        }
+
+        return $rows;
+    }
+
     /*
      * <style> Defines style information for a document
 
@@ -1032,60 +1082,6 @@ class Html
 
     #region 12. Icons
 
-    public static function tHeaderRow($columns, $attributes = array(), $columnAttributes = array(), $delimiter = "|")
-    {
-        if (is_null($columns)) return "";
-
-        $columns = is_array($columns)
-            ? $columns
-            : (strpos($columns, $delimiter) > 0
-                ? explode($delimiter, $columns)
-                : $columns
-            );
-
-        if (is_array($columns)) {
-            $_heading = $columns;
-            $columns = Html::open("tr", $attributes);
-            foreach ($_heading as $item)
-                $columns .= Html::th("$item", $columnAttributes);
-            $columns .= Html::close("tr");
-        }
-
-        return Html::create("thead", [], $columns);
-    }
-
-    public static function th($innerHtml, $attributes = array())
-    {
-        return Html::create("th", $attributes, $innerHtml);
-    }
-    #endregion
-    #endregion
-
-    #region Helper functions
-
-    public static function tBody($rows, $attributes = array(), $rowAttributes = array(), $columnAttributes = array(), $delimiter = "|")
-    {
-        $rows = is_null($rows)
-            ? ""
-            : (is_array($rows)
-                ? $rows :
-                (strpos($rows, $delimiter) > 0
-                    ? explode($delimiter, $rows)
-                    : $rows)
-            );
-
-        if (is_array($rows)) {
-            $_heading = $rows;
-            $rows = Html::open("tbody", $attributes);
-            foreach ($_heading as $item)
-                $rows .= Html::tRow($item, $rowAttributes, $columnAttributes);
-
-            $rows .= Html::close("tbody");
-        }
-
-        return $rows;
-    }
-
     public static function tRow($columns, $attributes = array(), $columnAttributes = array(), $delimiter = "|")
     {
         $columns = is_null($columns)
@@ -1112,6 +1108,10 @@ class Html
     {
         return Html::create("td", $attributes, $innerHtml);
     }
+    #endregion
+    #endregion
+
+    #region Helper functions
 
     public static function tFooterRow($columns, $attributes = array(), $columnAttributes = array(), $delimiter = "|")
     {
@@ -1158,7 +1158,7 @@ class Html
      */
     public static function div(string $innerHtml = '', array $attributes = array()): string
     {
-        return Html::create('div', $attributes, $innerHtml);
+        return self::output(Html::create('div', $attributes, $innerHtml));
     }
 
     /**

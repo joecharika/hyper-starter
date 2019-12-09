@@ -17,8 +17,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Reflection" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Routing" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/SQL" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Twig" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Utils" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/ViewEngine" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />

@@ -6,7 +6,7 @@
     "password": "<database-password>"
   },
   "debug": true,
-  "limitRequest": true,
+  "limitRequests": true,
   "errors": {
     "default": "shared/error.html.twig",
     "custom": {}

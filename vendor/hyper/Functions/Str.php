@@ -95,7 +95,7 @@ abstract class Str
      * @param $startString
      * @return bool
      */
-    function startsWith ($string, $startString)
+    public static function startsWith($string, $startString)
     {
         return substr($string, 0, strlen($startString)) === $startString;
     }

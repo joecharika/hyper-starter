@@ -9,7 +9,10 @@ use Hyper\Application\HyperApp;
 use Hyper\Controllers\BaseController;
 use Hyper\Files\Folder;
 use Hyper\Functions\{Arr, Logger, Obj, Str};
+use Hyper\Http\StatusCode;
 use Twig\{Environment, Error\Error, Loader\FilesystemLoader};
+use Hyper\Twig\TwigFilters;
+use Hyper\Twig\TwigFunctions;
 use function class_exists;
 
 trait HyperError
@@ -72,8 +75,8 @@ trait HyperError
         $config = HyperApp::config();
 
         $baseController->addTwigExtensions($twig);
-        $baseController->addTwigFunctions($twig);
-        $baseController->addTwigFilters($twig);
+        TwigFunctions::attach($twig);
+        TwigFilters::attach($twig);
 
         try {
             if (Str::contains($context->getFile(), 'Hyper\\'))
@@ -95,7 +98,7 @@ trait HyperError
                 'returnLink' => Arr::key($_SERVER, "HTTP_REFERER", "/"),
                 'website' => Arr::key($_SERVER, "HTTP_HOST", 'unknown_site') . @$_SERVER['PATH_INFO'],
                 'error' => (object)[
-                    'message' => $context->message,
+                    'message' => $config->debug ? $context->message : self::getMessage($context->code),
                     'code' => $context->getCode(),
                     'stackTrace' => $trace,
                     'file' => $context->getFile(),
@@ -109,5 +112,10 @@ trait HyperError
         } catch (Error $e) {
             return $e->getMessage();
         }
+    }
+
+    public static function getMessage(int $code)
+    {
+        return @StatusCode::getAsArray()[$code] ?? 'Error';
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * hyper v1.0.0-beta.2 (https://hyper.com/php)
  * Copyright (c) 2019. J.Charika
@@ -17,6 +18,8 @@ use Hyper\Reflection\Annotation;
 use Hyper\SQL\SqlOperator;
 use PDO;
 use PDOException;
+use function is_int;
+use function property_exists;
 use function strtolower;
 use function trim;
 
@@ -72,7 +75,6 @@ class DatabaseContext
             };
 
             self::boot();
-
         } catch (HyperException $e) {
             self::error($e);
         }
@@ -95,7 +97,6 @@ class DatabaseContext
             return $namespace . ucfirst($context);
 
         return $context;
-
     }
     #endregion
 
@@ -119,10 +120,14 @@ class DatabaseContext
                     $classVars = get_class_vars($this->model);
 
                     $properties = array_map(
-                        function ($property) {
+                        function ($property) use ($classVars) {
                             $type = Annotation::getPropertyAnnotation($this->model, $property, 'SQLType') ?? 'text';
-                            $sqlAttrs = Annotation::getPropertyAnnotation($this->model, $property,
-                                    'SQLAttributes') ?? '';
+                            $sqlAttrs = Annotation::getPropertyAnnotation(
+                                    $this->model,
+                                    $property,
+                                    'SQLAttributes'
+                                ) ?? '';
+                            $value = $classVars[$property];
                             $hasDefault = !isset($value) ? '' : (empty($value) ? '' : "DEFAULT $value");
                             return "`$property` $type $sqlAttrs $hasDefault";
                         },
@@ -160,7 +165,7 @@ class DatabaseContext
             foreach ($classVars as $classVar => $value) {
                 $classVar = strtolower($classVar);
                 if (strpos($classVar, "id") && $classVar !== "id")
-                    array_push($foreignKeys, strtr($classVar, ['id' => '']));
+                    $foreignKeys[] = strtr($classVar, ['id' => '']);
             }
         } else ("Model({$this->model}) does not exist");
 
@@ -170,20 +175,6 @@ class DatabaseContext
     #endregion
 
     #region ForeignObject
-
-    /**
-     * Attach parent objects to entities if list is not empty
-     * @param $parents
-     * @return DatabaseContext
-     */
-    public function parents($foreignParents): DatabaseContext
-    {
-        if (isset($this->list))
-            foreach ($this->list as $key => $obj)
-                $this->list[$key] = $this->foreignParent($obj, $foreignParents);
-
-        return $this;
-    }
 
     /**
      * Add foreign lists of items that reference this item on this model
@@ -201,6 +192,49 @@ class DatabaseContext
     }
 
     /**
+     * Get all saved objects
+     * @param array|null $columns
+     * @param array|null $foreignParents
+     * @param array|null $foreignLists
+     * @return DatabaseContext
+     */
+    public function all(array $columns = null, array $foreignParents = null, array $foreignLists = null): DatabaseContext
+    {
+        if (!isset($this->list) || empty($this->list)) {
+            $this->list = array_map(
+                $this->foreignClosure,
+                $this->query
+                    ->selectFrom($this->dbTable, $columns)
+                    ->whereNotDeleted()
+                    ->exec()
+                    ->getResult()
+                    ->getArrayCopy()
+            );
+
+            if (isset($foreignParents))
+                $this->parents($foreignParents);
+
+            if (isset($foreignLists))
+                $this->lists($foreignLists);
+        }
+        return $this;
+    }
+
+    /**
+     * Attach parent objects to entities if list is not empty
+     * @param $parents
+     * @return DatabaseContext
+     */
+    public function parents($foreignParents): DatabaseContext
+    {
+        if (isset($this->list))
+            foreach ($this->list as $key => $obj)
+                $this->list[$key] = $this->foreignParent($obj, $foreignParents);
+
+        return $this;
+    }
+
+    /**
      * Attach a foreign parent
      * @param $entity
      * @param $parents
@@ -209,10 +243,10 @@ class DatabaseContext
     protected function foreignParent($entity, $parents)
     {
         if (isset($entity)) :
-            foreach ($parents as $foreignKey => $foreignModel):
-                $column = \is_int($foreignKey) ? $this->context . 'Id' : $foreignKey;
+            foreach ($parents as $foreignKey => $foreignModel) :
+                $column = is_int($foreignKey) ? $this->context . 'Id' : $foreignKey;
 
-                if (!\property_exists($entity, $foreignKey))
+                if (!property_exists($entity, $foreignKey))
                     self::error("Column, $column does'nt exists");
 
                 $entity->$foreignModel = (new DatabaseContext($foreignModel))
@@ -224,7 +258,41 @@ class DatabaseContext
 
         return $entity;
     }
+    #endregion
 
+    #region ListQuery
+
+    /**
+     * First object, can be with condition where condition is true
+     * @param string $column
+     * @param string $value
+     * @param string $operator
+     * @param null $parents
+     * @param null $lists
+     * @return object|null
+     */
+    public function first($column = '', $value = '1', $operator = SqlOperator::equal, $parents = null, $lists = null)
+    {
+        $obj = isset($this->list)
+            ? @$this->list[0]
+            : $this->query
+                ->selectFrom($this->dbTable)
+                ->where($column, $value, $operator)
+                ->subWhere('deletedAt', 'NULL', SqlOperator::is)
+                ->exec($this->model)
+                ->getResult();
+
+        if (!isset($obj))
+            return null;
+
+        if (isset($parents))
+            $obj = $this->foreignParent($obj, $parents);
+
+        if (isset($lists))
+            $obj = $this->foreignList($obj, $lists);
+
+        return $obj;
+    }
 
     /**
      * Attach a foreign list of specified entities that rely on this entity
@@ -234,9 +302,9 @@ class DatabaseContext
      */
     protected function foreignList($entity, $lists): object
     {
-        foreach ($lists as $key => $foreign):
+        foreach ($lists as $key => $foreign) :
             $name = Str::pluralize($foreign);
-            $column = \is_int($key) ? $this->context . 'Id' : $key;
+            $column = is_int($key) ? $this->context . 'Id' : $key;
             $entity->$name = (new DatabaseContext($foreign))
                 ->where($column, $entity->id)
                 ->toList();
@@ -244,36 +312,41 @@ class DatabaseContext
 
         return $entity;
     }
-    #endregion
-
-    #region ListQuery
 
     /**
-     * Get all saved objects
-     * @param array|null $columns
+     * Get the list from multi-select executions such as select, where, search etc.
+     * @return array
+     */
+    public function toList(): array
+    {
+        $list = $this->list;
+        $this->list = null;
+        return $list;
+    }
+
+    /**
+     * @param $column
+     * @param $operator
+     * @param $value
      * @return DatabaseContext
      */
-    public function all(array $columns = null, array $foreignParents = null, array $foreignLists = null): DatabaseContext
+    public function where($column, $value, $operator = SqlOperator::equal): DatabaseContext
     {
-        if (!isset($this->list) || empty($this->list)) {
-            $this->list = array_map(
-                $this->foreignClosure,
-                $this->query
-                    ->selectFrom($this->dbTable, $columns)
-                    ->where('deletedAt', 'NULL', SqlOperator::is)
-                    ->exec()
-                    ->getResult()
-                    ->getArrayCopy()
-            );
-
-            if (isset($foreignParents))
-                $this->parents($foreignParents);
-
-            if (isset($foreignLists))
-                $this->with($foreignLists);
-        }
+        $this->list = array_map(
+            $this->foreignClosure,
+            $this->query
+                ->selectFrom($this->dbTable)
+                ->where($column, $value, $operator)
+                ->subWhere('deletedAt', 'NULL', SqlOperator::is)
+                ->exec()
+                ->getResult()
+                ->getArrayCopy()
+        );
         return $this;
     }
+    #endregion
+
+    #region FilterQuery
 
     /**
      * Paginate a result
@@ -297,12 +370,15 @@ class DatabaseContext
     {
         $this->list = isset($this->list)
             ? array_slice($this->list, 0, $limit)
-            : array_map($this->foreignClosure, $this->query
-                ->selectFrom($this->dbTable)
-                ->limitOffset($limit, $offset)
-                ->exec()
-                ->getResult()
-                ->getArrayCopy()
+            : array_map(
+                $this->foreignClosure,
+                $this->query
+                    ->selectFrom($this->dbTable)
+                    ->whereNotDeleted()
+                    ->limitOffset($limit, $offset)
+                    ->exec()
+                    ->getResult()
+                    ->getArrayCopy()
             );
 
         return $this;
@@ -321,7 +397,7 @@ class DatabaseContext
 
         $this->query
             ->selectFrom($this->dbTable)
-            ->where('deletedAt', "null", SqlOperator::is)
+            ->whereNotDeleted()
             ->setQuery('and (');
 
         $properties = get_class_vars($this->model);
@@ -329,8 +405,12 @@ class DatabaseContext
         unset($properties['id']);
 
         foreach ($properties as $classVar => $value) {
-            $this->query->subWhere($classVar, "%$search%", 'like',
-                array_key_first($properties) === $classVar ? '' : 'or');
+            $this->query->subWhere(
+                $classVar,
+                "%$search%",
+                'like',
+                array_key_first($properties) === $classVar ? '' : 'or'
+            );
         }
 
         $this->list = array_map(
@@ -346,7 +426,7 @@ class DatabaseContext
     }
     #endregion
 
-    #region FilterQuery
+    #region CrudQuery
 
     /**
      * Get sum from a certain column
@@ -395,9 +475,6 @@ class DatabaseContext
             ? $this->deleteAll($soft)
             : $this->deleteOne($entity, $soft);
     }
-    #endregion
-
-    #region CrudQuery
 
     /**
      * @param $soft
@@ -442,65 +519,6 @@ class DatabaseContext
         }
     }
 
-    /**
-     * First object, can be with condition where condition is true
-     * @param string $column
-     * @param string $value
-     * @param string $operator
-     * @param array $with Foreign lists to attach. Must contain name of models to attach.
-     * @return object|null
-     */
-    public function first($column = '', $value = '1', $operator = SqlOperator::equal, $parents = null, $lists = null)
-    {
-        $obj = $this->query
-            ->selectFrom($this->dbTable)
-            ->where($column, $value, $operator)
-            ->subWhere('deletedAt', 'NULL', SqlOperator::is)
-            ->exec($this->model)
-            ->getResult();
-
-        if (!isset($obj))
-            return null;
-
-        if (isset($parents))
-            $obj = $this->foreignParent($obj, $parents);
-
-        if (isset($lists))
-            $obj = $this->foreignList($obj, $lists);
-
-        return $obj;
-    }
-
-    /**
-     * Get the list from multi-select executions such as select, where, search etc.
-     * @return array
-     */
-    public function toList(): array
-    {
-        return $this->list;
-    }
-
-    /**
-     * @param $column
-     * @param $operator
-     * @param $value
-     * @return DatabaseContext
-     */
-    public function where($column, $value, $operator = SqlOperator::equal): DatabaseContext
-    {
-        $this->list = array_map(
-            $this->foreignClosure,
-            $this->query
-                ->selectFrom($this->dbTable)
-                ->where($column, $value, $operator)
-                ->subWhere('deletedAt', 'NULL', SqlOperator::is)
-                ->exec()
-                ->getResult()
-                ->getArrayCopy()
-        );
-        return $this;
-    }
-
     #endregion
 
     #region RecycleBin
@@ -510,7 +528,7 @@ class DatabaseContext
      * @param object $entity The entity to update with the new values
      * @return bool Whether the update was successful or not
      */
-    public function update(object $entity)
+    public function update($entity)
     {
         @$id = $entity->id;
         $entity = (array)Obj::toInstance($this->model, $entity);
@@ -527,7 +545,6 @@ class DatabaseContext
             ->updateWhere($this->dbTable, $entity, "id|$id")
             ->exec(null)
             ->getSuccess();
-
     }
 
     /**

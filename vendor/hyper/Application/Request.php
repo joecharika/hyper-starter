@@ -3,14 +3,13 @@
 
 namespace Hyper\Application;
 
-
 use Hyper\Database\DatabaseContext;
-use Hyper\SQL\SqlOperator;
 use Hyper\Exception\{HyperError, HyperHttpException, NullValueException};
 use Hyper\Functions\{Arr, Obj, Str};
 use Hyper\Http\HttpMessage;
 use Hyper\Reflection\Annotation;
 use Hyper\Routing\Route;
+use Hyper\SQL\SqlOperator;
 use function array_slice;
 use function count;
 use function explode;
@@ -45,7 +44,7 @@ class Request
      */
     public static function protocol()
     {
-        return strtolower(explode('/', $_SERVER['SERVER_PROTOCOL'])[0]);
+        return strtolower(@explode('/', $_SERVER['SERVER_PROTOCOL'])[0]);
     }
 
     /**
@@ -136,7 +135,7 @@ class Request
      */
     public static function isGet()
     {
-        return $_SERVER['REQUEST_METHOD'] == "GET";
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
     }
 
     /**
@@ -148,34 +147,8 @@ class Request
     {
         $params = explode("/", strtolower("$route"));
 
-        return strtolower(Request::params()->controller) === Arr::key($params, 1, 'home')
-            && strtolower(Request::params()->action) === Arr::key($params, 2, 'index');
-    }
-
-    /**
-     * @return object
-     */
-    public static function params()
-    {
-        $params = explode('/', self::path());
-
-        $id = Arr::key($params, 3, null);
-        $id = strlen($id) === 0 ? null : $id;
-
-        $obj = ['id' => $id];
-
-        if (count($params) > 3) {
-            foreach (array_slice($params, 4) as $key => $value) {
-                $obj["param$key"] = $value;
-            }
-        }
-
-        return (object)$obj;
-    }
-
-    public static function path()
-    {
-        return Arr::key(explode('?', Arr::key($_SERVER, 'REQUEST_URI', '/')), 0);
+        return strtolower(Request::route()->controller) === Arr::key($params, 1, 'home')
+            && strtolower(Request::route()->action) === Arr::key($params, 2, 'index');
     }
 
     /**
@@ -200,6 +173,11 @@ class Request
         );
     }
 
+    public static function path()
+    {
+        return Arr::key(explode('?', Arr::key($_SERVER, 'REQUEST_URI', '/')), 0);
+    }
+
     /**
      * @return object
      */
@@ -212,11 +190,12 @@ class Request
     /**
      * Binds given object to Request post/get params
      *
-     * @param object $object The object to bind
+     * @param object|null $object The object to bind
      * @return object The same object with values from the request
      */
-    public static function bind(object $object): object
+    public static function bind($object): object
     {
+        if (!isset($object)) return (object)[];
 
         $class = strtolower(get_class($object));
         $properties = get_class_vars($class);
@@ -271,17 +250,24 @@ class Request
      * @param $controller
      * @param string|null $param
      * @param HttpMessage|string|null $message
+     * @param array $query
+     * @return string
      */
-    public static function redirectTo($action, $controller, $param = null, $message = null)
+    public static function redirectTo($action, $controller, $param = null, $message = null, $query = [])
     {
         $message = is_string($message) ? new HttpMessage($message) : $message;
 
         $message = isset($message) ? (isset($message->message) ? "?$message" : '') : '';
 
+        $query = Arr::spread((array)$query, true, '&', '=');
+
+        $query = empty($message) ? (empty($query) ? '' : "?$query") : $query;
+
         $param = !isset($param) ? '' : $param;
         $action = $action === 'index' ? '' : "$action/";
 
-        header("Location: /$controller/$action$param$message");
+        header("Location: /$controller/$action$param$message$query");
+        return 'Redirecting...';
     }
 
     /**
@@ -304,7 +290,8 @@ class Request
 
     /**
      * Get a model from the submitted id parameter (/{controller}/{action}/{id})
-     * @param array $with
+     * @param null $parents
+     * @param null $lists
      * @return object|null
      */
     public static function fromParam($parents = null, $lists = null)
@@ -313,12 +300,32 @@ class Request
 
         if (!is_null(@Request::params()->id) or !is_null(@Request::data()->id)) {
             $model = (new DatabaseContext(Str::singular(Request::$route->realController)))
-                ->first('id', Request::params()->id ?? Request::data()->id,SqlOperator::equal,$parents, $lists);
+                ->first('id', Request::params()->id ?? Request::data()->id, SqlOperator::equal, $parents, $lists);
 
             if (!isset($model)) self::error(HyperHttpException::notFound());
-
         } else self::error(HyperHttpException::badRequest());
 
         return $model;
+    }
+
+    /**
+     * @return object
+     */
+    public static function params()
+    {
+        $params = explode('/', self::path());
+
+        $id = Arr::key($params, 3, null);
+        $id = strlen($id) === 0 ? null : $id;
+
+        $obj = ['id' => $id];
+
+        if (count($params) > 3) {
+            foreach (array_slice((array)$params, 4) as $key => $value) {
+                $obj["param$key"] = $value;
+            }
+        }
+
+        return (object)$obj;
     }
 }

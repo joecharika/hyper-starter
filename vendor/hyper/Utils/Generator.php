@@ -15,4 +15,9 @@ class Generator
     {
         return $start . uniqid() . uniqid() . uniqid() . uniqid() . date('jNWto.his');
     }
+
+    public static function forgeUrl(string $string)
+    {
+        return strtr(strtolower($string), [' ' => '-']);
+    }
 }
