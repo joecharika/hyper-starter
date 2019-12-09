@@ -1,0 +1,27 @@
+{% compress %}
+    <!--
+     * Hyper v1.0.0-beta.2 (https://hyper.starlight.co.zw)
+     * Copyright (c) 2019. J.Charika
+     * Licensed under MIT (https://github.com/joecharika/hyper/master/LICENSE)
+    -->
+
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{{ img('favicon.png') }}" type="image/png">
+        <title>{% block title %}{% endblock %} - My Hyper Application</title>
+        <link rel="stylesheet" href="{{ css('style') }}">
+        {% block styles %}{% endblock %}
+    </head>
+    <body>
+    {% block body %}{% endblock %}
+    <script src="{{ js('script') }}"></script>
+    {% block scripts %}{% endblock %}
+    </body>
+
+    </html>
+
+{% endcompress %}

@@ -1,0 +1,15 @@
+{
+  "db": {
+    "host": "<database-host>",
+    "database": "<database-name>",
+    "username": "<database-username>",
+    "password": "<database-password>"
+  },
+  "debug": true,
+  "limitRequest": true,
+  "errors": {
+    "default": "shared/error.html.twig",
+    "custom": {}
+  },
+  "reportLink": "<error-reporting-link>"
+}

@@ -1,0 +1,21 @@
+{% extends 'shared/layout.html.twig' %}
+
+{# Dynamic page title #}
+{% block title %}About{% endblock %}
+
+{# Page specific styles #}
+{% block styles %}{% endblock %}
+
+{# Page body #}
+{% block body %}
+    <img src="{{ img('logo.png') }}" alt="hyper-logo">
+    <div class="welcome">
+        <h1>About page</h1>
+        <p>Your about page</p>
+        {% include 'includes/_links.html.twig' %}
+    </div>
+{% endblock %}
+
+{# Page specific scripts #}
+{% block scripts %}{% endblock %}
+

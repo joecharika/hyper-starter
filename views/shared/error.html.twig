@@ -1,0 +1,88 @@
+<!--
+ * Hyper v1.0.0-beta.2 (https://hyper.starlight.co.zw)
+ * Copyright (c) 2019. J.Charika
+ * Licensed under MIT (https://github.com/joecharika/hyper/master/LICENSE)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ css('style') }}">
+    <link rel="stylesheet" href="{{ css('error') }}">
+</head>
+<body>
+<div class="h-exc-exception">
+    <main class="h-exc-main row no-gutters">
+        <aside class="col-md-6">
+            <div class="h-message-container">
+                <header class="h-exc-header">
+                    <h2>{{ title }}</h2>
+                </header>
+                <object>
+                    <p>{{ error.message|raw }}</p>
+                </object>
+                <nav>
+                    <a class="button" href="{{ returnLink }}">Go back</a>
+                    <a class="button" href="/">Home</a>
+                    <a class="button" href="{{ report }}">Report</a>
+                </nav>
+                <footer class="h-exc-footer">
+                    <small>
+                        <i>
+                            Powered by hyper &copy; Error reported {{ now|date('l, F j, Y \\a\\t g:i:s A') }}
+                        </i>
+                    </small>
+                </footer>
+            </div>
+            <div class="ancient-one"></div>
+        </aside>
+        {% if app.debug %}
+            <article class="col-md-6">
+                <section>
+                    <div class="window mac">
+                        <div class="title-bar">
+                            <div class="close"></div>
+                            <div class="minimize"></div>
+                            <div class="zoom"></div>
+                            <div class="title">Stacktrace</div>
+                        </div>
+                        <div class="page">
+                            <pre>{{ error.stackTrace|raw }}</pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="window mac">
+                        <div class="title-bar" title="{{ error.file }}">
+                            <div class="close"></div>
+                            <div class="minimize"></div>
+                            <div class="zoom"></div>
+                            <div class="title">(Line: {{ error.line }}) {{ error.file }}</div>
+                        </div>
+                        <div class="page source">
+                            {{ error.source|raw }}
+                        </div>
+                    </div>
+                </section>
+            </article>
+        {% else %}
+            <div class="blank">
+                <div class="window mac">
+                    <div class="title-bar">
+                        <div class="close"></div>
+                        <div class="minimize"></div>
+                        <div class="zoom"></div>
+                    </div>
+                    <div class="page mixin">
+                        {{ title }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </main>
+</div>
+</body>
+</html>

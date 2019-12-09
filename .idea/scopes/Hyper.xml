@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Hyper" pattern="file[hyper-starter]:*/" />
+</component>

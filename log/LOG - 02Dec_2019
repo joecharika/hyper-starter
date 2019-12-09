@@ -1,0 +1,796 @@
+====================[ ERROR @ 05:19:42pm ]====================
+    Unable to find template "home/index.html.twig" (looked into: C:\Users\joe\PhpstormProjects\hyper-starter/views).: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Unable to find ...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Controllers\BaseController.php(114): Hyper\Exception\HyperHttpException::notFound('Unable to find ...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\controllers\HomeController.php(52): Hyper\Controllers\BaseController->view('home/index')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(216): Controllers\HomeController->index()
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#6 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 05:25:19pm ]====================
+    Unable to find template "shared/layout.html.twig" (looked into: C:\Users\joe\PhpstormProjects\hyper-starter/views) in "home/index.html.twig" at line 1.: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Unable to find ...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Controllers\BaseController.php(114): Hyper\Exception\HyperHttpException::notFound('Unable to find ...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\controllers\HomeController.php(52): Hyper\Controllers\BaseController->view('home/index')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(216): Controllers\HomeController->index()
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#6 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 05:26:34pm ]====================
+    Unable to find template "includes/_header.html.twig" (looked into: C:\Users\joe\PhpstormProjects\hyper-starter/views) in "shared/layout.html.twig" at line 48.: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Unable to find ...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Controllers\BaseController.php(114): Hyper\Exception\HyperHttpException::notFound('Unable to find ...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\controllers\HomeController.php(52): Hyper\Controllers\BaseController->view('home/index')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(216): Controllers\HomeController->index()
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#6 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 05:47:22pm ]====================
+    Controller <span style='color: red'>( \Controllers\AboutController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:10:38pm ]====================
+    Controller action <span style='color: red'>( \Controllers\HomeController::About )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller acti...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(222): Hyper\Exception\HyperHttpException::notFound('Controller acti...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:51:38pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:52:43pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:53:39pm ]====================
+    Api is not available: 500
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(194): Hyper\Application\HyperApp::error('Api is not avai...')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(181): Hyper\Application\HyperApp->api(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:53:59pm ]====================
+    Api is not available: 500
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(194): Hyper\Application\HyperApp::error('Api is not avai...')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(181): Hyper\Application\HyperApp->api(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:55:17pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:57:45pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:58:29pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:59:02pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 06:59:17pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:00:16pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:02:07pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non-existing-controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(226): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(187): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:05:35pm ]====================
+    Configuration UI is not available: 500
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(216): Hyper\Application\HyperApp::error('Configuration U...')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(190): Hyper\Application\HyperApp->configUI(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:07:20pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non_existing_controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:07:40pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non_existing_controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:09:03pm ]====================
+    Controller <span style='color: red'>( \Controllers\Non_existing_controllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:09:08pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:13:11pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:13:42pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:13:50pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:15:09pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:16:35pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+        #1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+        #2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+        #3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+        #4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+        #5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:16:51pm ]====================
+    Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found: 404
+
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(37): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:56:00pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:58:58pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:59:00pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 07:59:27pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:00:00pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:00:00pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> 8
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(98): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(8, 'Undefined index...', 'C:\\Users\\joe\\Ph...', 98, Array)
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(67): Hyper\Application\HyperEventHook::render('shared/error.ht...', Object(Hyper\Exception\HyperException), '<pre class="h-e...', ' : Hyper\\Applic...')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(44): Hyper\Application\HyperEventHook::hyperError(Object(Hyper\Exception\HyperException))
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(57): Hyper\Application\HyperEventHook::error(Object(Hyper\Exception\HyperException))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#6 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:02:42pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:02:42pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> 8
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(98): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(8, 'Undefined index...', 'C:\\Users\\joe\\Ph...', 98, Array)
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(67): Hyper\Application\HyperEventHook::render('shared/error.ht...', Object(Hyper\Exception\HyperException), '<pre class="h-e...', ' : Hyper\\Applic...')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(44): Hyper\Application\HyperEventHook::hyperError(Object(Hyper\Exception\HyperException))
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(57): Hyper\Application\HyperEventHook::error(Object(Hyper\Exception\HyperException))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#6 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:02:48pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:04:55pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:05:19pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:06:13pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:07:33pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:10:23pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:11:07pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:12:50pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> Unable to register extension "Twig\Extension\OptimizerExtension" as it is already registered.
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(LogicException))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:13:01pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:13:22pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:13:29pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:14:03pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:14:33pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\NonExistingControllerController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:14:48pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:14:48pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> 8
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(98): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(8, 'Undefined index...', 'C:\\Users\\joe\\Ph...', 98, Array)
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(67): Hyper\Application\HyperEventHook::render('shared/error.ht...', Object(Hyper\Exception\HyperException), '<pre class="h-e...', ' : Hyper\\Applic...')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(44): Hyper\Application\HyperEventHook::hyperError(Object(Hyper\Exception\HyperException))
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(57): Hyper\Application\HyperEventHook::error(Object(Hyper\Exception\HyperException))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#6 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:15:11pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:15:56pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:16:01pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:16:01pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> 8
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(98): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(8, 'Undefined index...', 'C:\\Users\\joe\\Ph...', 98, Array)
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(67): Hyper\Application\HyperEventHook::render('shared/error.ht...', Object(Hyper\Exception\HyperException), '<pre class="h-e...', ' : Hyper\\Applic...')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(44): Hyper\Application\HyperEventHook::hyperError(Object(Hyper\Exception\HyperException))
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(57): Hyper\Application\HyperEventHook::error(Object(Hyper\Exception\HyperException))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#6 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:16:04pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:16:04pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> 8
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(98): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(8, 'Undefined index...', 'C:\\Users\\joe\\Ph...', 98, Array)
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(67): Hyper\Application\HyperEventHook::render('shared/error.ht...', Object(Hyper\Exception\HyperException), '<pre class="h-e...', ' : Hyper\\Applic...')
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperError.php(44): Hyper\Application\HyperEventHook::hyperError(Object(Hyper\Exception\HyperException))
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(57): Hyper\Application\HyperEventHook::error(Object(Hyper\Exception\HyperException))
+#5 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#6 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#7 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:16:24pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> syntax error, unexpected 'return' (T_RETURN)
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(63): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(ParseError))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:17:06pm ]====================
+    500: Hello world
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->about()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:19:12pm ]====================
+    500: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:19:35pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:22:30pm ]====================
+    500: Hyper\Exception\HyperException: Contact unimplemented in C:\Users\joe\PhpstormProjects\hyper-starter\controllers\HomeController.php:72
+Stack trace:
+#0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(69): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Exception\HyperException))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:23:13pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:24:11pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:24:28pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:25:16pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:25:36pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:25:48pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:26:59pm ]====================
+    500: A hyper unrelated error occurred, and all we know is this: <br> Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperEventHook.php(61): Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Hyper\Application\Event))
+#1 [internal function]: Hyper\Application\HyperEventHook->Hyper\Application\{closure}(Object(Exception))
+#2 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:27:15pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:31:39pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:31:57pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:31:59pm ]====================
+    404: Controller <span style='color: red'>( \Controllers\ReportController )</span> not found
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Exception\HyperHttpException.php(13): Hyper\Exception\HyperHttpException::get('Controller <spa...', '404')
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(243): Hyper\Exception\HyperHttpException::notFound('Controller <spa...')
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#4 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#5 {main}
+    ## EndStacktrace   ::########################################################
+
+====================[ ERROR @ 08:32:15pm ]====================
+    404: Contact unimplemented
+    
+    ## Stacktrace      ::########################################################
+        #0 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(233): Controllers\HomeController->contact()
+#1 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(193): Hyper\Application\HyperApp->web(Object(Hyper\Routing\Route))
+#2 C:\Users\joe\PhpstormProjects\hyper-starter\vendor\hyper\Application\HyperApp.php(112): Hyper\Application\HyperApp->run(Array)
+#3 C:\Users\joe\PhpstormProjects\hyper-starter\index.php(43): Hyper\Application\HyperApp->__construct('SuperCoolAppNam...')
+#4 {main}
+    ## EndStacktrace   ::########################################################
+

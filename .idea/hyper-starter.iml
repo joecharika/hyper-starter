@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/funcphp/twig-compress" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Application" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Controllers" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Database" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Exception" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Files" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Functions" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Http" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Models" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/QueryBuilder" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Reflection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Routing" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/SQL" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/Utils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hyper/ViewEngine" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

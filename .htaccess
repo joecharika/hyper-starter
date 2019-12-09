@@ -1,0 +1,44 @@
+# Hyper v1.0.2-beta.2 (https://hyper.starlight.co.zw)
+# Copyright (c) 2019. J.Charika
+# Licensed under MIT (https://github.com/joecharika/hyper/master/LICENSE)
+
+# Tell indexer to ignore files and folder
+# Disabling directory browsing
+Options -Indexes
+IndexIgnore *
+
+# Restrict access to all files starting with "."
+<FilesMatch "^\.">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+# Protect your configuration
+<Files "hyper.config.json">
+    order allow,deny
+    deny from all
+    satisfy all
+</Files>
+
+# Allow any request to index.php
+<Files "^index.php">
+    order allow,deny
+    allow from all
+</Files>
+
+# Restrict access to twig templates or .php and .html files
+<Files ".*\.(twig|php|html)">
+    order allow,deny
+    deny from all
+    satisfy all
+</Files>
+
+# Rewrite request to root index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>

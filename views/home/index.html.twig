@@ -1,0 +1,29 @@
+{% extends 'shared/layout.html.twig' %}
+
+{# Dynamic page title #}
+{% block title %}Home{% endblock %}
+
+{# Page specific styles #}
+{% block styles %}{% endblock %}
+
+{# Page body #}
+{% block body %}
+    <img src="{{ img('logo.png') }}" alt="hyper-logo">
+    <div class="welcome">
+        <h1>Home</h1>
+        <p>Welcome to Hyper PHP. Version {{ app.version }}</p>
+        <p></p>
+        {% include 'includes/_links.html.twig' %}
+        <hr>
+        <nav>
+            <h4 class="inline-block">What's next?</h4>
+            <a target="_blank" href="http://hyper.starlight.co.zw/docs" class="button">Documentation</a>
+            <a target="_blank" href="http://hyper.starlight.co.zw/docs" class="button">About Hyper</a>
+            <a target="_blank" href="https://github/joecharika/hyper" class="button">Star on Github</a>
+        </nav>
+    </div>
+{% endblock %}
+
+{# Page specific scripts #}
+{% block scripts %}{% endblock %}
+
