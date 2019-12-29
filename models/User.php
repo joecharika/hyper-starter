@@ -24,7 +24,7 @@ class User extends \Hyper\Models\User
      * @SQLType varchar(200)
      * :: This annotation is used for specifying the SQL Type of the filed, 'TEXT' is used by default
      *
-     * @SQLAttributes varchar(200) unique
+     * @SQLAttributes unique
      * :: This annotation is used for defining SQL Attributes
      *
      * @var string $additionalField
